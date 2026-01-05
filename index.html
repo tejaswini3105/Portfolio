@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejaswini Gosavi | MCA Professional Portfolio</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #930a4c; 
+            --secondary: #67042b;
+            --accent: #2104ae;
+            --light-bg: #f8f9fa;
+            /* Brand Colors for Contact */
+            --whatsapp-color: #25d366;
+            --email-color: #ea4335;
+            --call-color: #007bff;
+        }
+
+        /* Pure Portfolio in Times New Roman as requested previously */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Times New Roman', Times, serif; scroll-behavior: smooth; }
+        body { background: var(--light-bg); color: #2f3542; overflow-x: hidden; padding-top: 70px; }
+
+        /* --- Custom Navigation --- */
+        nav {
+            position: fixed; top: 0; width: 100%; background: white;
+            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        nav .logo { font-weight: 700; color: var(--primary); font-size: 1.5rem; letter-spacing: 1px; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul li a { text-decoration: none; color: #444; font-weight: 500; transition: 0.3s; font-size: 0.9rem; }
+        nav ul li a:hover { color: var(--primary); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(135deg, #1e3799, #047071);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; border-radius: 0 0 50px 50px; padding: 0 20px;
+        }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
+        .hero p { font-size: 1.4rem; opacity: 0.9; margin-bottom: 30px; font-weight: 300; }
+
+        .btn-box { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .main-btn {
+            padding: 12px 28px; border-radius: 50px; text-decoration: none;
+            font-weight: 600; transition: 0.4s; display: flex; align-items: center; gap: 10px; font-size: 0.9rem;
+        }
+        .btn-resume { background: white; color: var(--primary); }
+        .btn-linkedin { background: #0077b5; color: white; }
+        .btn-github { background: #24292e; color: white; }
+        .main-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+        /* --- Section Styling --- */
+        section { padding: 80px 10%; }
+        .section-title { text-align: center; font-size: 2.3rem; margin-bottom: 50px; position: relative; color: var(--secondary); font-weight: 700; }
+        .section-title::after {
+            content: ''; width: 60px; height: 4px; background: var(--primary);
+            position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); border-radius: 2px;
+        }
+
+        /* --- Info Cards --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .glass-card {
+            background: white; padding: 30px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s;
+            border-top: 5px solid var(--primary);
+        }
+        .glass-card:hover { transform: translateY(-10px); }
+
+        /* --- Personal Details List --- */
+        .details-list { list-style: none; }
+        .details-list li { margin-bottom: 12px; font-size: 1rem; display: flex; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .details-list b { width: 150px; color: var(--primary); }
+
+        /* --- Education Table --- */
+        .table-container { overflow-x: auto; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: white; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 18px; text-align: left; border-bottom: 1px solid #f0f0f0; }
+        th { background: var(--primary); color: white; font-weight: 600; }
+
+        /* --- Skills Styling --- */
+        .skill-tag {
+            display: inline-block; background: #eef2ff; color: var(--primary);
+            padding: 8px 18px; border-radius: 50px; margin: 5px; font-weight: 600; font-size: 0.85rem;
+            border: 1px solid var(--accent);
+        }
+
+        /* --- Hobbies Section --- */
+        .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .hobby-card {
+            background: white; padding: 25px; border-radius: 20px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
+        }
+        .hobby-card:hover { background: var(--primary); color: white; transform: translateY(-5px); }
+        .hobby-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; display: block; }
+        .hobby-card:hover i { color: white; }
+
+        /* --- Contact Cards (Updated Colors) --- */
+        .contact-card {
+            background: white; padding: 25px; border-radius: 15px; text-align: center;
+            text-decoration: none; color: var(--secondary); border: 1px solid #eee; transition: 0.3s;
+        }
+        .contact-card:hover { border-color: var(--primary); background: #f0f3ff; transform: scale(1.05); }
+        .contact-card i { font-size: 2rem; margin-bottom: 10px; }
+        
+        /* Email color */
+        .card-email i { color: var(--email-color); }
+        /* WhatsApp color */
+        .card-whatsapp i { color: var(--whatsapp-color); }
+        /* Call color */
+        .card-call i { color: var(--call-color); }
+
+        /* --- Footer Social Icons Style --- */
+.social-icons a { 
+    text-decoration: none !important; /* Underline hatane ke liye */
+    margin: 0 15px; 
+    display: inline-block;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth effect ke liye */
+}
+
+/* Icons ke default colors */
+.fa-envelope { color: #f1e5e4; font-size: 1.8rem; } 
+.fa-linkedin { color: #ffffff; font-size: 1.8rem; } 
+.fa-github { color: #ffffff; font-size: 1.8rem; }
+
+/* Hover Effect: Mouse le jane par icon bada hoga aur chamkega */
+.social-icons a:hover {
+    transform: translateY(-5px) scale(1.2); /* Icon thoda upar jayega aur bada hoga */
+    filter: brightness(1.2); /* Thoda jyada bright dikhega */
+}
+
+/* LinkedIn hover par blue color */
+.social-icons a:hover .fa-envelope { color: #830000; }
+
+/* LinkedIn hover par blue color */
+.social-icons a:hover .fa-linkedin { color: #0077b5; }
+
+/* GitHub hover par thoda grey/white */
+.social-icons a:hover .fa-github { color: #000000; }
+
+
+        /* --- Footer --- */
+        footer { background: var(--secondary); color: white; padding: 40px 10%; text-align: center; }
+        .footer-logo { font-size: 1.8rem; font-weight: 700; margin-bottom: 10px; }
+        .social-icons { margin: 20px 0; }
+        .social-icons a { color: white; font-size: 1.6rem; margin: 0 12px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+            section { padding: 50px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">TEJASWINI</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1 data-aos="fade-down">Tejaswini Gosavi</h1>
+        <p data-aos="fade-up">Master of Computer Applications Graduate</p>
+        <div class="btn-box" data-aos="zoom-in">
+            <a href="https://linkedin.com/in/Tejaswini310502" target="_blank" class="main-btn btn-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/Tejaswini310502" target="_blank" class="main-btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+            <a href="Tejaswini.pdf" download class="main-btn btn-resume"><i class="fas fa-file-download"></i> Download Resume</a>
+        </div>
+    </header>
+
+    <section id="about" data-aos="fade-up">
+        <h2 class="section-title">Career Objective & Details</h2>
+        <div class="grid">
+            <div class="glass-card">
+                <h3 style="margin-bottom: 15px; color: var(--primary);"><i class="fas fa-bullseye"></i> My Goal</h3>
+                <p style="line-height: 1.8;">To start a career in a challenging and growth Oriented organization to effectively use skills and excel as a professional to achieve greater heights and recognition in career.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="margin-bottom: 15px; color: var(--primary);"><i class="fas fa-user"></i> Personal Info</h3>
+                <ul class="details-list">
+                    <li><b>Date of Birth</b> : 31 May, 2002</li>
+                    <li><b>Languages</b> : English, Hindi, Marathi</li>
+                    <li><b>Location</b> : Jalgaon, Maharashtra</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" data-aos="fade-right">
+        <h2 class="section-title">Education</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Degree</th>
+                        <th>Year</th>
+                        <th>University/Board</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>MCA</td><td>2025</td><td>KBC NMU, Jalgaon</td><td>72.38%</td></tr>
+                    <tr><td>BCA</td><td>2023</td><td>KBC NMU, Jalgaon</td><td>82.83%</td></tr>
+                    <tr><td>HSC</td><td>2020</td><td>Maharashtra State Board</td><td>71.54%</td></tr>
+                    <tr><td>SSC</td><td>2018</td><td>Maharashtra State Board</td><td>88%</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="skills" data-aos="zoom-in">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="grid">
+            <div class="glass-card">
+            <h4 style="margin-bottom: 15px;"><i class="fas fa-code"></i> Frontend</h4>
+            <div class="skill-tag">HTML</div>
+            <div class="skill-tag">CSS</div>
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">Bootstrap</div>
+        </div>
+
+        <div class="glass-card">
+            <h4 style="margin-bottom: 15px;"><i class="fas fa-server"></i> Backend & DB</h4>
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">Django</div>
+            <div class="skill-tag">MySQL</div>
+            <div class="skill-tag">PHP</div>
+        </div>
+
+        <div class="glass-card">
+            <h4 style="margin-bottom: 15px;"><i class="fas fa-brain"></i> Data & Logic</h4>
+            <div class="skill-tag">C</div>
+            <div class="skill-tag">C++</div>
+            <div class="skill-tag">Machine Learning</div>
+            <div class="skill-tag">Data Analysis</div>
+        </div>
+            <div class="glass-card">
+                <h4 style="margin-bottom: 15px;"><i class="fas fa-tools"></i> Office Tools</h4>
+                <div class="skill-tag">MS Word</div><div class="skill-tag">MS Excel</div><div class="skill-tag">PowerPoint</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Major Projects</h2>
+        <div class="grid">
+            <div class="glass-card" data-aos="flip-left">
+                <i class="fas fa-utensils fa-2x" style="color: var(--primary);"></i>
+                <h3 style="margin-top: 15px;">Online Food Ordering System</h3>
+                <p style="color: var(--primary); font-weight: 600; margin-bottom: 10px;">(2024-25)</p>
+                <p>A full-stack project focused on providing a seamless interface for food delivery services.</p>
+            </div>
+            <div class="glass-card" data-aos="flip-right">
+                <i class="fas fa-birthday-cake fa-2x" style="color: var(--primary);"></i>
+                <h3 style="margin-top: 15px;">Online Cake Shop Website</h3>
+                <p style="color: var(--primary); font-weight: 600; margin-bottom: 10px;">(2022-23)</p>
+                <p>IT fieldwork project designed for e-commerce and bakery management.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities" data-aos="fade-up">
+        <h2 class="section-title">Academic Work & Strengths</h2>
+        <div class="grid">
+            <div class="glass-card">
+                <h4 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-file-alt"></i> Documentation & PPT</h4>
+                <p>• Created comprehensive MCA project reports.</p>
+                <p>• Designed professional presentations for project viva.</p>
+                <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="Mezbaani_Report.pdf" download class="skill-tag" style="background: #fff5f5; border: 1px solid #d11141; color: #d11141;">
+                        <i class="fas fa-download"></i> Report
+                    </a>
+                    <a href="Mezbaani.pptx" download class="skill-tag" style="background: #f5faff; border: 1px solid #d24726; color: #d24726;">
+                        <i class="fas fa-download"></i> PPT
+                    </a>
+                </div>
+            </div>
+            <div class="glass-card">
+                <h4 style="color: var(--primary);"><i class="fas fa-award"></i> Events & Certificates</h4>
+                <p style="margin-top: 10px;">• Participated in <b>Milestone 2023</b> (National Level Event).</p>
+                <p>• Certified in <b>MS-CIT</b> (Information Technology).</p>
+            </div>
+            <div class="glass-card">
+                <h4 style="color: var(--primary);"><i class="fas fa-star"></i> Key Strengths</h4>
+                <p style="margin-top: 10px;">• Creative Mindset & Teamwork Skills.</p>
+                <p>• Positive attitude and hardworking nature.</p>
+                <p>• Good Communication & Quick Learner.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hobbies" data-aos="fade-up">
+        <h2 class="section-title">Hobbies & Interests</h2>
+        <div class="hobby-grid">
+            <div class="hobby-card">
+                <i class="fas fa-palette"></i>
+                <h3>Painting</h3>
+                <p>Expressing creativity through colors</p>
+            </div>
+            <div class="hobby-card">
+                <i class="fas fa-cut"></i>
+                <h3>Crafting</h3>
+                <p>Creating unique hand-made designs</p>
+            </div>
+            <div class="hobby-card">
+                <i class="fas fa-pencil-ruler"></i>
+                <h3>Creative Mindset</h3>
+                <p>Designing innovative solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" data-aos="fade-up">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <a href="mailto:tejaswinigosavi2002@gmail.com" class="contact-card card-email">
+                <i class="fas fa-envelope"></i>
+                <h4>Email</h4>
+                <p style="font-size: 0.8rem;">tejaswinigosavi2002@gmail.com</p>
+            </a>
+            <a href="https://wa.me/9604526340" target="_blank" class="contact-card card-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <h4>WhatsApp</h4>
+                <p style="font-size: 0.8rem;">Direct Chat</p>
+            </a>
+            <a href="tel:9604526340" class="contact-card card-call">
+                <i class="fas fa-phone-alt"></i>
+                <h4>Call</h4>
+                <p style="font-size: 0.8rem;">+91 9604526340</p>
+            </a>
+        </div>
+    </section>
+
+    
+    <footer>
+        <div class="footer-logo">TEJASWINI GOSAVI</div>
+        <p>Master of Computer Applications | Fresher</p>
+        <div class="social-icons">
+            <a href="mailto:tejaswinigosavi2002@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://linkedin.com/in/Tejaswini310502" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/Tejaswini310502" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p style="font-size: 0.8rem; opacity: 0.7;">Tejaswini Kailasgir Gosavi | Jalgaon, Maharashtra</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
